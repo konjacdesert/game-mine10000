@@ -2,7 +2,7 @@ export class MSD2 {
   public static readonly C = {
     rows: 100,
     columns: 100,
-    numMine: 2500,
+    numMine: 1500,
     cell: {
       width: 8,
       height: 8,
