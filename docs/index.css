@@ -4,8 +4,8 @@ body {
 
 #game {
   background-color: #000 !important;
-  transform-origin: top left;
-  transform: scale(2);
+  /* transform-origin: top left; */
+  /* transform: scale(2); */
   user-select: none;
   image-rendering: pixelated;
   border: none;

@@ -43,9 +43,11 @@ const Game = (function () {
         dig(cellX, cellY);
         break;
       case 2:
-        // console.log("flag");
-        flag(cellX, cellY);
-        break;
+        if (!e.shiftKey) {
+          // console.log("flag");
+          flag(cellX, cellY);
+          break;
+        }
       case 3:
       case 4:
         // console.log("around");
