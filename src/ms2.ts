@@ -145,9 +145,9 @@ export class MSD2 {
   public getCellData() {
     let c = 0,
       f = 0;
-    this.checked2.forEach((v) => {
+    this.checked2.forEach((v, i) => {
       if (v < 0) f++;
-      else if (v > 0) c++;
+      else if (v > 0 && this.data[i] >= 0) c++;
     });
     return {
       flag: f,
@@ -388,17 +388,11 @@ export class MSD2 {
     for (const i of this.drawUpdateList) {
       const x = i % MSD2.C.columns;
       const y = (i / MSD2.C.columns) | 0;
-      // console.log(x, y);
+
       this.yoshinaniDigFlag(x, y);
       this.around(x, y, (nx, ny) => {
         this.yoshinaniDigFlag(nx, ny);
       });
-      // ) {
-      // console.log(x, y);
-      // this.around(x, y, (nx, ny) => {
-      //   this.addUpdateList(nx, ny);
-      // });
-      // }
     }
   }
 
