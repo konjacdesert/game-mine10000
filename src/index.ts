@@ -34,18 +34,14 @@ const Game = (function () {
     const cellY = ((e.offsetY + 0.5) / MSD2.C.cell.height) | 0;
     switch (e.buttons) {
       case 1:
-        if (mineData.getState() == "start") {
-          mineData.setMine(cellX, cellY);
-          // 新しいタイマー
-          stopWatch.start();
-        }
-        // console.log("dig");
-        dig(cellX, cellY);
-        break;
-      case 2:
         if (!e.shiftKey) {
-          // console.log("flag");
-          flag(cellX, cellY);
+          if (mineData.getState() == "start") {
+            mineData.setMine(cellX, cellY);
+            // 新しいタイマー
+            stopWatch.start();
+          }
+          // console.log("dig");
+          dig(cellX, cellY);
           break;
         }
       case 3:
@@ -53,8 +49,14 @@ const Game = (function () {
         // console.log("around");
         yoshinani(cellX, cellY);
         break;
+      case 2:
+        // console.log("flag");
+        flag(cellX, cellY);
+        break;
     }
     // console.log(mineData.getCellData());
+
+    if ((<HTMLInputElement>document.getElementById("cheat")).checked) mineData.yoshinaniUpdate();
 
     updateLeft();
 

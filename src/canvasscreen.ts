@@ -34,6 +34,10 @@ export class CanvasScreen {
       // console.log("up");
       return false;
     };
+    this.display.canvas.ondblclick = function () {
+      console.log("dbl");
+      return false;
+    };
 
     // バッファ
     this.buffer = document.createElement("canvas").getContext("2d");

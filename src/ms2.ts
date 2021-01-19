@@ -283,7 +283,7 @@ export class MSD2 {
   }
 
   public yoshinaniDigFlag(dx: number, dy: number) {
-    // フラグが無視
+    // フラグは無視
     if (this.isFlagged(dx, dy)) return;
 
     // 開いていたら
@@ -384,10 +384,30 @@ export class MSD2 {
     }
   }
 
+  public yoshinaniUpdate() {
+    for (const i of this.drawUpdateList) {
+      const x = i % MSD2.C.columns;
+      const y = (i / MSD2.C.columns) | 0;
+      // console.log(x, y);
+      this.yoshinaniDigFlag(x, y);
+      this.around(x, y, (nx, ny) => {
+        this.yoshinaniDigFlag(nx, ny);
+      });
+      // ) {
+      // console.log(x, y);
+      // this.around(x, y, (nx, ny) => {
+      //   this.addUpdateList(nx, ny);
+      // });
+      // }
+    }
+  }
+
   public drawUpdate(ctx: CanvasRenderingContext2D) {
     while (this.drawUpdateList.length > 0) {
-      const tmp = this.drawUpdateList.pop();
-      this.draw(ctx, tmp % MSD2.C.columns, (tmp / MSD2.C.columns) | 0);
+      const tmp = this.drawUpdateList.shift();
+      const x = tmp % MSD2.C.columns;
+      const y = (tmp / MSD2.C.columns) | 0;
+      this.draw(ctx, x, y);
     }
   }
   public drawAll(ctx: CanvasRenderingContext2D) {
