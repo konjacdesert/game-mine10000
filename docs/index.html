@@ -6,27 +6,33 @@
       name="viewport"
       content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
     />
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <link rel="stylesheet" href="./css/index.css" />
     <script src="./index.js"></script>
     <title>マインスイーパー10000</title>
   </head>
   <body>
     <div class="base">
       <div class="bar">
-        <button id="reset">リセット</button>
-        <label for="flag">旗:</label>
-        <input id="flag" readonly />
-        <label for="time">時間:</label>
-        <input id="time" readonly />
+        <button id="reset"></button>
+        <label for="reset" onclick=""><img src="./img/re.png" /></label>
+        <input id="flagmode" type="checkbox" />
+        <label for="flagmode" onclick=""><img src="./img/flag.png" /></label>
+        <img src="./img/mine.png" />
+        <span id="flag" class="number">0</span>
+        <img src="./img/clock.png" />
+        <span id="time" class="number">0</span>
       </div>
       <div class="field">
         <div class="center">
-          <canvas id="game" style="width: 800px"></canvas>
+          <canvas id="game" style="width: 2400px"></canvas>
         </div>
       </div>
       <div class="bar">
-        <label for="cheat">チート:</label>
         <input id="cheat" type="checkbox" />
+        <label for="cheat" onclick="">
+          <img src="./img/cheat.png" />
+        </label>
       </div>
     </div>
   </body>

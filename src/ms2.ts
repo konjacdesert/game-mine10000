@@ -282,7 +282,7 @@ export class MSD2 {
     this.setFlag(x, y, !this.isFlagged(x, y));
   }
 
-  public yoshinaniDigFlag(dx: number, dy: number) {
+  public yoshinaniDigFlag(dx: number, dy: number, autoFlag: boolean = true) {
     // フラグは無視
     if (this.isFlagged(dx, dy)) return;
 
@@ -308,7 +308,7 @@ export class MSD2 {
           });
         }
         // 周りの地雷数と開いてないマス＋フラグの数が同じだったら
-        if (raw == left.length + flag.length) {
+        if (autoFlag && raw == left.length + flag.length) {
           // 残りのマスにフラグを建てる
           left.forEach((v) => {
             this.setFlag(v.x, v.y, true);

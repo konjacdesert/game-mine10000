@@ -37,28 +37,20 @@ const Game = (function () {
 
     const cellX = ((curX + 0.5) / MSD2.C.cell.width) | 0;
     const cellY = ((curY + 0.5) / MSD2.C.cell.height) | 0;
-    switch (e.buttons) {
-      case 1:
-        if (!e.shiftKey) {
-          if (mineData.getState() == "start") {
-            mineData.setMine(cellX, cellY);
-            // 新しいタイマー
-            stopWatch.start();
-          }
-          // console.log("dig");
-          dig(cellX, cellY);
-          break;
-        }
-      case 3:
-      case 4:
-        // console.log("around");
-        yoshinani(cellX, cellY);
-        break;
-      case 2:
-        // console.log("flag");
+
+    if (mineData.getState() == "start") {
+      mineData.setMine(cellX, cellY);
+      stopWatch.start();
+      dig(cellX, cellY);
+    } else {
+      yoshinani(cellX, cellY);
+      if ((<HTMLInputElement>document.getElementById("flagmode")).checked || e.buttons == 2) {
         flag(cellX, cellY);
-        break;
+      } else {
+        dig(cellX, cellY);
+      }
     }
+
     // console.log(mineData.getCellData());
 
     if ((<HTMLInputElement>document.getElementById("cheat")).checked) mineData.yoshinaniUpdate();
@@ -85,14 +77,14 @@ const Game = (function () {
     if (mineData.getState() == "ingame") mineData.flipFlag(x, y);
   }
   function yoshinani(x: number, y: number) {
-    if (mineData.getState() == "ingame") mineData.yoshinaniDigFlag(x, y);
+    if (mineData.getState() == "ingame") mineData.yoshinaniDigFlag(x, y, false);
   }
 
   function updateLeft() {
-    (<HTMLInputElement>document.getElementById("flag")).value = mineData.getCellData().flagLeft.toFixed(0);
+    document.getElementById("flag").innerText = mineData.getCellData().flagLeft.toFixed(0);
   }
   function updateTime() {
-    (<HTMLInputElement>document.getElementById("time")).value = stopWatch.getSec().toFixed(0);
+    document.getElementById("time").innerText = stopWatch.getSec().toFixed(0);
   }
 
   return {
