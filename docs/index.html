@@ -2,23 +2,32 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
     <link rel="stylesheet" href="./index.css" />
     <script src="./index.js"></script>
     <title>マインスイーパー10000</title>
   </head>
   <body>
-    <h2>マインスイーパー10000</h2>
-    <div>
-      <p>左：穴をあける<br />右：旗を立てる<br />中 or 左+右 or Shift+左：便利機能</p>
-      <label for="flag">旗:</label>
-      <input id="flag" readonly />
-      <label for="time">時間:</label>
-      <input id="time" readonly />
-      <label for="cheat">チート:</label>
-      <input id="cheat" type="checkbox" />
-      <button id="reset">リセット</button>
+    <div class="base">
+      <div class="bar">
+        <button id="reset">リセット</button>
+        <label for="flag">旗:</label>
+        <input id="flag" readonly />
+        <label for="time">時間:</label>
+        <input id="time" readonly />
+      </div>
+      <div class="field">
+        <div class="center">
+          <canvas id="game" style="width: 800px"></canvas>
+        </div>
+      </div>
+      <div class="bar">
+        <label for="cheat">チート:</label>
+        <input id="cheat" type="checkbox" />
+      </div>
     </div>
-    <canvas id="game"></canvas>
   </body>
 </html>

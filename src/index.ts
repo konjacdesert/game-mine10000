@@ -30,8 +30,13 @@ const Game = (function () {
     // やめとけやめとけ！
     if (mineData.getState() == "stop") return;
 
-    const cellX = ((e.offsetX + 0.5) / MSD2.C.cell.width) | 0;
-    const cellY = ((e.offsetY + 0.5) / MSD2.C.cell.height) | 0;
+    const canvas = screen.get("display").canvas;
+
+    const curX = (e.offsetX * canvas.width) / canvas.clientWidth;
+    const curY = (e.offsetY * canvas.height) / canvas.clientHeight;
+
+    const cellX = ((curX + 0.5) / MSD2.C.cell.width) | 0;
+    const cellY = ((curY + 0.5) / MSD2.C.cell.height) | 0;
     switch (e.buttons) {
       case 1:
         if (!e.shiftKey) {
