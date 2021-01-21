@@ -35,7 +35,7 @@ export class CanvasScreen {
       return false;
     };
     this.display.canvas.ondblclick = function () {
-      console.log("dbl");
+      // console.log("dbl");
       return false;
     };
 
