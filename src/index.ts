@@ -44,7 +44,7 @@ const Game = (function () {
       dig(cellX, cellY);
     } else {
       yoshinani(cellX, cellY);
-      console.log(e.buttons);
+      // console.log(e.buttons);
 
       if (e.buttons <= 2)
         if ((<HTMLInputElement>document.getElementById("flagmode")).checked != (e.buttons == 2)) {
